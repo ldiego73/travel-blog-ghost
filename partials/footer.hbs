@@ -1,0 +1,93 @@
+<footer>
+  <div class="footer-top py-16">
+    <div class="container" data-aos="fade-up">
+      <div class="columns is-marginless">
+        <div class="column">
+          <h4 class="footer-subtitle mt-8 mb-24">{{ t "recent posts" }}</h4>
+          <section class="content recent posts">
+            {{#get "posts" limit="3" order="published_at desc" as |recents|}}
+            {{#foreach recents}}
+            <div class="recent-single-post is-clearfix">
+              <a href="{{url}}">
+                <figure class="post-picture lazy lazy-loading">
+                  {{#if feature_image}}
+                  <img class="post-thumb" data-src="{{img_url feature_image size="s"}}" />
+                  {{else}}
+                  <img class="post-thumb" data-src="{{asset "images/no-image.png"}}" />
+                  {{/if}}
+                </figure>
+                <div class="post-info">
+                  <h4>{{title}}</h4>
+                  <span>{{date published_at format="MMMM DD, YYYY"}}</span>
+                </div>
+              </a>
+            </div>
+            {{/foreach}}
+            {{/get}}
+          </section>
+        </div>
+        <div class="column">
+          <h4 class="footer-subtitle mt-8 mb-24">{{ t "popular tags" }}</h4>
+          {{#get "tags" limit="all"}}
+          {{#foreach tags}}
+          <a href="{{url}}">
+            <span class="tag footer-tag">{{name}}</span>
+          </a>
+          {{/foreach}}
+          {{/get}}
+        </div>
+        <div class="column">
+          <h4 class="footer-subtitle mt-8 mb-24">{{ t "newsletter" }}</h4>
+          <section class="content newsletter">
+            <p class="newsletter description">{{t "newsletter description"}}</p>
+            <div class="field newsletter-email">
+              <div class="control">
+                <input class="input is-primary is-small" type="email" placeholder="{{ t "subscribe email" }}">
+              </div>
+            </div>
+            <div class="field newsletter-subscribe">
+              <div class="control">
+                <button class="button is-primary is-small">{{ t "subscribe button" }}</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-content py-16 is-clearfix">
+        <div class="social-links">
+          {{#if @site.facebook}}
+          <a href="{{facebook_url @site.facebook}}" target="_blank" rel="noopener" aria-label="Facebook">
+            <span class="icon is-medium fa-lg">
+              <i class="fab fa-facebook-f"></i>
+            </span>
+          </a>
+          {{/if}}
+          {{#if @site.twitter}}
+          <a href="{{twitter_url @site.twitter}}" target="_blank" rel="noopener" aria-label="Twitter">
+            <span class="icon is-medium fa-lg">
+              <i class="fab fa-twitter"></i>
+            </span>
+          </a>
+          {{/if}}
+          <a href="http://instagram.com/chapandomochila" target="_blank" rel="noopener" aria-label="Instagram">
+            <span class="icon is-medium fa-lg">
+              <i class="fab fa-instagram"></i>
+            </span>
+          </a>
+          <a href="/rss" target="_blank" rel="noopener" aria-label="RSS">
+            <span class="icon is-medium fa-lg">
+              <i class="fas fa-rss"></i>
+            </span>
+          </a>
+        </div>
+        <div class="copyright info">
+          &copy; {{date format="YYYY"}} <a href="{{@site.url}}">{{@site.title}}</a>. {{t "copyright info"}}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

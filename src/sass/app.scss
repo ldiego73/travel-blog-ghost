@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+$family-sans-serif: "Open Sans", sans-serif;
+$family-hand-writing: "Nexa Rust Slab", sans-serif;
+$family-primary: $family-sans-serif;
+$family-secondary: $family-hand-writing;
+$box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.15);
+$animation-scale: transform .5s cubic-bezier(.165,.84,.44,1);
+$header-height: 72px;
+$header-mobile-height: 52px;
+$fullhd-enabled: false;
+
+$primary: #ff4847;
+$link: $primary;
+
+@import "../../node_modules/bulma/sass/utilities/_all.sass";
+@import "../../node_modules/bulma/sass/base/_all.sass";
+@import "../../node_modules/bulma/sass/grid/_all.sass";
+@import "../../node_modules/bulma/sass/elements/container.sass";
+@import "../../node_modules/bulma/sass/elements/tag.sass";
+@import "../../node_modules/bulma/sass/elements/button.sass";
+@import "../../node_modules/bulma/sass/elements/icon.sass";
+@import "../../node_modules/bulma/sass/components/navbar.sass";
+@import "../../node_modules/bulma/sass/components/card.sass";
+@import "../../node_modules/bulma/sass/form/shared.sass";
+@import "../../node_modules/bulma/sass/form/tools.sass";
+@import "../../node_modules/bulma/sass/form/input-textarea.sass";
+
+$dark-theme-primary: $black-ter;
+$dark-theme-secondary: $grey-darker;
+$dark-theme-text-color: $white-ter;
+$dark-theme-border-color: $grey-dark;
+
+@import "common/mixins";
+@import "common/animation";
+@import "common/spacing";
+@import "common/fonts";
+@import "common/lazy-images";
+@import "components/header";
+@import "components/banner";
+@import "components/main";
+@import "components/post-card-feature";
+@import "components/pagination";
+@import "components/footer";
+@import "components/back-to-top";
+@import "components/button";
+@import "components/search";
+
+@import "common/global";
+
+@import "pages/404";

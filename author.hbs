@@ -1,0 +1,21 @@
+{{!< layout}}
+
+{{#author}}
+
+{{#> banner background=cover_image}}
+<h1 class="mb-12">{{ name }}</h1>
+{{#if bio}}
+<h3 class="mb-24">{{ bio }}</h3>
+{{/if}}
+{{/banner}}
+
+{{/author}}
+
+<main class="container main-content-area" data-aos="fade-up" data-aos-delay="300">
+  <div class="columns is-marginless is-multiline">
+    {{#foreach posts}}
+    {{> "posts/post-card"}}
+    {{/foreach}}
+  </div>
+  {{pagination}}
+</main>

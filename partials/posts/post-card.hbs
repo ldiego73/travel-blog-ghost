@@ -1,0 +1,44 @@
+<article class="post-card column is-one-third-fullhd is-one-third-widescreen is-half-tablet is-full-mobile">
+  <div class="card">
+    <div class="card-image post-card-image">
+      {{#if feature_image}}
+      <a href="{{url}}">
+        <figure class="lazy lazy-loading">
+          <img data-srcset="{{img_url feature_image size="s"}} 300w,
+                    {{img_url feature_image size="m"}} 600w,
+                    {{img_url feature_image size="l"}} 1000w,
+                    {{img_url feature_image size="xl"}} 2000w" sizes="(max-width: 1000px) 400px, 700px"
+            data-src="{{img_url feature_image size="m"}}" alt="{{title}}">
+          {{else}}
+          <img data-src="{{asset "images/no-image.svg"}}" alt="{{title}}">
+          {{/if}}
+        </figure>
+      </a>
+    </div>
+    <div class="card-content post-card-content">
+      <div class="content">
+        {{#if primary_tag}}
+        <a href="{{primary_tag.url}}" class="post-card-tag is-block">{{primary_tag.name}}</a>
+        {{/if}}
+        <a href="{{url}}" class="post-card-title is-block">{{title}}</a>
+      </div>
+    </div>
+    <footer class="card-footer post-card-footer mx-16">
+      <div class="card-footer-item post-card-start">
+        <a href="{{primary_author.url}}" aria-label="author" rel="author">
+          <figure class="lazy lazy-loading is-small">
+            {{#if primary_author.profile_image}}
+            <img class="lazy" data-src="{{img_url primary_author.profile_image size="xs"}}" />
+            {{else}}
+            <img class="lazy" data-src="{{asset "images/avatar.jpg"}}" />
+            {{/if}}
+          </figure>
+          <span>{{primary_author.name}}</span>
+        </a>
+      </div>
+      <div class="card-footer-item post-card-end">
+        <time datetime="{{date published_at format="YYYY-MM-DD"}}">{{date published_at format="MMMM DD, YYYY"}}</time>
+      </div>
+    </footer>
+  </div>
+</article>

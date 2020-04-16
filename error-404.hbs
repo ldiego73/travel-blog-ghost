@@ -1,0 +1,31 @@
+{{!< layout}}
+
+{{#contentFor "styles"}}
+<style type="text/css">
+  .not-found-image {
+    width: 372px;
+    height: 412px;
+    background: url({{asset "images/backpackers.svg"}}) no-repeat;
+  }
+
+  [data-theme="dark"] .not-found-image {
+    background: url({{asset "images/backpackers-white.svg"}}) no-repeat;
+  }
+</style>
+{{/contentFor}}
+
+<main class="container main-content-area" data-aos="fade-up" data-aos-delay="300">
+  <div class="not-found">
+    <div class="not-found-image"></div>
+    <div>
+      <h1 class="not-found-title mb-4">404</h1>
+      <p class="page not found mb-16">{{ t "page not found" }}</p>
+      <p class="not found description mb-24">{{ t "not found description" }}</p>
+      <div class="not-found-go-back">
+        <a href="/" class="button is-medium is-outlined">
+          {{ t "not-found-go-back" }}
+        </a>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,47 @@
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+html {
+  overflow: initial;
+}
+
+body {
+  margin: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+
+  &.has-fixed-header {
+    margin-top: $header-height;
+    min-height: calc(100vh - #{$header-height});
+
+    @include until($tablet) {
+      margin-top: $header-mobile-height;
+      min-height: calc(100vh - #{$header-mobile-height});
+    }
+  }
+
+  &.no-scroll-y {
+    overflow-y: hidden;
+  }
+}
+
+a {
+  transition: $theme-transition;
+}
+
+input {
+  transition: $theme-transition;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+@include scrollLightTheme;
+
+[data-theme="dark"] {
+  @include scrollDarkTheme;
+}

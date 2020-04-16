@@ -1,0 +1,154 @@
+.submenu {
+  position: relative;
+  background: $white;
+  padding: 24px 20px;
+  z-index: 100;
+  border-top: 1px solid $white-ter;
+  display: none;
+  visibility: hidden;
+
+  &.opened {
+    display: block;
+    visibility: visible;
+  }
+
+  &.closed {
+    visibility: visible;
+  }
+
+  .submenu-title {
+    display: block;
+    width: 100%;
+    font-weight: $weight-normal;
+  }
+
+  .menu-posts {
+    margin-bottom: 36px;
+
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+
+      .swiper-slide {
+        width: auto;
+        display: flex;
+      }
+    }
+
+    .menu-single-post {
+      margin: 0 48px 0 0;
+
+      a {
+        display: block;
+        color: $grey-dark;
+
+        &:hover,
+        &:focus {
+          .post-thumb {
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      .post-picture {
+        overflow: hidden;
+        border-radius: 4px;
+        margin-bottom: 16px;
+
+        .post-thumb {
+          width: 240px;
+          height: 120px;
+          object-fit: cover;
+          border-radius: 4px;
+          transition: $animation-scale;
+        }
+      }
+
+      .post-info {
+        h4 {
+          font-size: $size-6;
+          font-weight: $weight-normal;
+          margin-bottom: 8px;
+        }
+        span {
+          font-size: $size-7;
+        }
+      }
+    }
+  }
+
+  .menu-tags {
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    a {
+      color: $grey-dark;
+      font-weight: $weight-semibold;
+      font-size: $size-7;
+
+      @include colorHoverAndFocus;
+    }
+  }
+
+  @include from($tablet) {
+    position: absolute;
+    top: $header-height;
+    left: 0;
+    right: 0;
+    display: block;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 60px 60px 0px,
+      rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+
+    &.opened {
+      animation: openSubmenuAnimation 0.3s both;
+
+      @keyframes openSubmenuAnimation {
+        0% {
+          opacity: 0;
+          transform: translate3d(0, -5%, 0);
+        }
+        to {
+          opacity: 1;
+          transform: translateZ(0);
+        }
+      }
+    }
+
+    &.closed {
+      animation: closeSubmenuAnimation 0.3s both;
+
+      @keyframes closeSubmenuAnimation {
+        0% {
+          visibility: visible;
+          opacity: 1;
+          transform: translateZ(0);
+        }
+        to {
+          visibility: hidden;
+          opacity: 0;
+          transform: translate3d(0, -2.5%, 0);
+        }
+      }
+    }
+  }
+
+  @include until($tablet) {
+    box-shadow: none;
+    animation: openMenuAnimation 0.3s both;
+
+    @keyframes openMenuAnimation {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    .menu-posts {
+      .menu-single-post {
+        margin: 0 16px 0 0;
+      }
+    }
+  }
+}

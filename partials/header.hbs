@@ -1,0 +1,43 @@
+<header>
+  <div class="container">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="menu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="navbar-search-mobile is-hidden-desktop">
+          <span class="icon">
+            <i class="fas fa-search"></i>
+          </span>
+        </div>
+      </div>
+      <div id="menu" class="navbar-menu" data-aos="fade-down">
+        <div class="navbar-start">
+          {{#if @site.navigation}}
+          {{ navigation }}
+          {{/if}}
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item navbar-search">
+            <span class="icon fa-lg">
+              <i class="fas fa-search"></i>
+            </span>
+          </div>
+          <div class="navbar-item navbar-theme" data-tippy-content="{{ t "change theme" }}">
+            <span class="icon fa-lg">
+              <i class="far fa-dot-circle"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="navbar-theme menu-theme" data-tippy-content="{{ t "change theme" }}">
+      <span class="icon fa-lg">
+        <i class="far fa-dot-circle"></i>
+      </span>
+    </div>
+  </div>
+  {{> submenu }}
+</header>

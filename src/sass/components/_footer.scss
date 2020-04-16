@@ -1,0 +1,123 @@
+$footer-color: $white-ter;
+$social-links-size: 32px;
+$post-thumb-size: 60px;
+
+footer {
+  background: $dark-theme-primary;
+  font-size: $size-7;
+  color: $footer-color;
+
+  a {
+    color: findColorInvert($link);
+
+    &:hover, &:focus {
+      color: $link;
+    }
+  }
+
+  .footer-top {
+    border-top: 1px solid $grey-lighter;
+
+    .footer-subtitle {
+      text-transform: uppercase;
+      font-weight: $weight-semibold;
+      font-size: $size-6;
+    }
+  }
+
+  .recent-single-post {
+    margin-bottom: 16px;
+
+    a {
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        img {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .post-picture {
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .post-info {
+      margin-left: 16px;
+    }
+
+    .post-thumb {
+      width: $post-thumb-size;
+      height: $post-thumb-size;
+      object-fit: cover;
+      border-radius: 4px;
+      transition: $animation-scale;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .footer-tag {
+    @include tagDarkTheme {
+      font-weight: $weight-semibold;
+    }
+  }
+
+  .newsletter {
+    .newsletter description {
+      margin-bottom: 8px;
+    }
+
+    .newsletter-email {
+      margin-bottom: 16px;
+
+      input {
+        @include inputDarkTheme;
+      }
+    }
+  }
+
+  .footer-bottom-content {
+    border-top: 1px solid $grey-lighter;
+
+    .copyright-info {
+      float: left;
+      line-height: $social-links-size;
+    }
+
+    .social-links {
+      float: right;
+
+      a {
+        display: inline-block;
+        width: $social-links-size;
+        height: $social-links-size;
+        line-height: $social-links-size;
+        text-align: center;
+      }
+    }
+
+    @include until($tablet) {
+      text-align: center;
+
+      .copyright-info {
+        float: none;
+      }
+
+      .social-links {
+        float: none;
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .footer-top {
+    border-top: 1px solid $dark-theme-border-color;
+  }
+}

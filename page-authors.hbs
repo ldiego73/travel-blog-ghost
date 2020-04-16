@@ -1,0 +1,87 @@
+{{!< layout}}
+
+{{#post}}
+
+{{#> banner background=feature_image}}
+<h1 class="mb-12">{{ title }}</h1>
+<h2 class="mb-24">{{t "authors subtitle"}}</h2>
+{{/banner}}
+
+<main class="container main-content-area" data-aos="fade-up" data-aos-delay="300">
+  <div class="columns is-marginless is-multiline">
+    {{#get 'authors' limit='all' include='count.posts' order='count.posts desc'}}
+    {{#foreach authors}}
+    <article
+      class="post-card as-author column is-one-third-fullhd is-one-third-widescreen is-half-tablet is-full-mobile">
+      <div class="card">
+        <div class="card-image post-card-image">
+          {{#if profile_image}}
+          <a href="{{url}}">
+            <figure class="lazy lazy-loading">
+              <img data-srcset="{{img_url profile_image size="s"}} 300w,
+                    {{img_url profile_image size="m"}} 600w,
+                    {{img_url profile_image size="l"}} 1000w,
+                    {{img_url profile_image size="xl"}} 2000w" sizes="(max-width: 1000px) 400px, 700px"
+                data-src="{{img_url profile_image size="m"}}" alt="{{title}}">
+              {{else}}
+              <img data-src="{{asset "images/no-image.svg"}}" alt="{{title}}">
+              {{/if}}
+            </figure>
+          </a>
+        </div>
+        <div class="card-content post-card-content">
+          <div class="content">
+            {{#if bio}}
+            <a href="{{url}}">
+              <p class="post-card-title">{{name}}</p>
+              <p class="post-card-bio mt-16">{{bio}}</p>
+            </a>
+            {{/if}}
+          </div>
+        </div>
+        <footer class="card-footer post-card-footer mx-16">
+          <div class="card-footer-item post-card-start">
+            {{plural count.posts empty=(t "no posts") singular=(t "1 post") plural=(t "% posts")}}
+          </div>
+          {{#has any="twitter, facebook, website"}}
+          <div class="card-footer-item post-card-end">
+            <ul class="post-card-links">
+              {{#if website}}
+              <li>
+                <a href="{{website}}" target="_blank" rel="noopener">
+                  <span class="icon fa-lg">
+                    <i class="fas fa-globe"></i>
+                  </span>
+                </a>
+              </li>
+              {{/if}}
+              {{#if facebook}}
+              <li>
+                <a href="https://facebook.com/{{facebook}}" target="_blank" rel="noopener">
+                  <span class="icon fa-lg">
+                    <i class="fab fa-facebook-f"></i>
+                  </span>
+                </a>
+              </li>
+              {{/if}}
+              {{#if twitter}}
+              <li>
+                <a href="https://twitter.com/{{twitter}}" target="_blank" rel="noopener">
+                  <span class="icon fa-lg">
+                    <i class="fab fa-twitter"></i>
+                  </span>
+                </a>
+              </li>
+              {{/if}}
+            </ul>
+          </div>
+          {{/has}}
+        </footer>
+      </div>
+    </article>
+    {{/foreach}}
+    {{/get}}
+  </div>
+</main>
+
+{{/post}}

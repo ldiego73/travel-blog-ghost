@@ -1,0 +1,43 @@
+<article class="post-feature">
+  <div class="card">
+    <div class="card-image post-feature-image">
+      {{#if feature_image}}
+      <a href="{{url}}">
+        <figure class="lazy lazy-loading">
+          <img data-src="{{img_url feature_image size="l"}}" alt="{{title}}">
+          {{else}}
+          <img data-src="{{asset "images/no-image.svg"}}" alt="{{title}}">
+          {{/if}}
+        </figure>
+      </a>
+    </div>
+    <div class="post-feature-star">
+      <div class="tag">
+        <span class="icon">
+          <i class="fas fa-star"></i>
+        </span>
+        <span>Featured</span>
+      </div>
+    </div>
+    <a href="{{url}}" class="post-feature-content">
+      <h1 class="post-card-title">{{title}}</h1>
+      <div class="post-card-time">
+        <time datetime="{{date published_at format="YYYY-MM-DD"}}">{{date published_at format="MMMM DD, YYYY"}}</time>
+      </div>
+    </a>
+    <div class="post-feature-meta">
+      <a href="{{primary_author.url}}" class="post-feature-author is-block" aria-label="author" rel="author">
+        <figure class="lazy lazy-loading is-small" data-tippy-content="{{ t "posted by" }} {{ primary_author.name }}">
+          {{#if primary_author.profile_image}}
+          <img class="lazy" data-src="{{img_url primary_author.profile_image size="xs"}}" />
+          {{else}}
+          <img class="lazy" data-src="{{asset "images/avatar.jpg"}}" />
+          {{/if}}
+        </figure>
+      </a>
+      {{#if primary_tag}}
+      <a href="{{primary_tag.url}}" class="post-feature-tag is-block">{{primary_tag.name}}</a>
+      {{/if}}
+    </div>
+  </div>
+</article>

@@ -1,0 +1,323 @@
+$post-card-border-radius: 12px;
+$post-card-author-size: 32px;
+$post-card-margin: 24px;
+$post-card-transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+$post-card-box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 60px 0px,
+  rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+
+@mixin featureImageHeight {
+  @include from($widescreen) {
+    height: 419px;
+  }
+
+  @include until($widescreen) {
+    height: 389px;
+  }
+
+  @include until($desktop) {
+    height: 389px;
+  }
+
+  @include until($tablet) {
+    height: 369px;
+  }
+}
+
+.post-card {
+  transition: $post-card-transition;
+
+  &.as-author {
+    //cursor: pointer;
+  }
+
+  .card {
+    border-radius: $post-card-border-radius;
+    overflow: hidden;
+    transition: $post-card-transition;
+
+    &:hover,
+    &:focus {
+      box-shadow: $post-card-box-shadow;
+    }
+  }
+
+  a {
+    color: $text;
+  }
+
+  &:hover,
+  &:focus {
+    transform: translateY(-5px);
+  }
+
+  .post-card-image img {
+    width: 100%;
+    object-fit: cover;
+
+    @include from($widescreen) {
+      height: 250px;
+    }
+
+    @include until($widescreen) {
+      height: 220px;
+    }
+
+    @include until($desktop) {
+      height: 220px;
+    }
+
+    @include until($tablet) {
+      height: 200px;
+    }
+  }
+
+  .post-card-content {
+    margin: $post-card-margin;
+    padding: 0;
+
+    .post-card-tag {
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      font-weight: $weight-semibold;
+      font-size: $size-7;
+    }
+
+    .post-card-title {
+      font-weight: $weight-semibold;
+      font-size: $size-5;
+    }
+
+    .post-card-bio {
+      font-size: $size-6;
+    }
+  }
+
+  .post-card-footer {
+    margin: 0 $post-card-margin;
+    color: $text;
+
+    .card-footer-item {
+      padding: 16px 0;
+
+      &:not(:last-child) {
+        border: 0;
+      }
+    }
+
+    .post-card-start {
+      justify-content: flex-start;
+
+      a {
+        display: flex;
+        align-items: center;
+      }
+
+      figure {
+        border-radius: 50%;
+      }
+
+      img {
+        width: $post-card-author-size;
+        height: $post-card-author-size;
+        border-radius: 50%;
+        margin-right: 8px;
+        object-fit: cover;
+      }
+    }
+
+    .post-card-end {
+      justify-content: flex-end;
+    }
+
+    .post-card-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      a {
+        @include colorHoverAndFocus;
+      }
+    }
+  }
+}
+
+.post-feature {
+  position: relative;
+
+  .card {
+    position: relative;
+    border-radius: $post-card-border-radius;
+    box-shadow: none;
+    overflow: hidden;
+
+    @include featureImageHeight;
+  }
+
+  .post-feature-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    figure {
+      background: $black;
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      @include featureImageHeight;
+    }
+  }
+
+  .post-feature-star {
+    position: absolute;
+    top: 47px;
+    right: 40px;
+    font-weight: $weight-semibold;
+    color: $black;
+    z-index: 2;
+
+    @include until($tablet) {
+      top: 26px;
+      right: 20px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+
+      .tag {
+        border-radius: 50%;
+        padding: 0;
+
+        .icon {
+          margin: 0 !important;
+        }
+        span:last-of-type {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .post-feature-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 125px 40px 40px;
+    width: 100%;
+    height: 100%;
+    color: $white-ter;
+    z-index: 3;
+
+    @include until($tablet) {
+      padding: 120px 20px 20px;
+    }
+
+    &:hover,
+    &:focus {
+      color: $white-ter;
+    }
+
+    .post-card-title {
+      font-weight: $weight-bold;
+      font-size: $size-2;
+    }
+
+    .post-card-time {
+      font-weight: $weight-semibold;
+      font-size: $size-7;
+    }
+  }
+
+  .post-feature-meta {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    z-index: 4;
+
+    @include until($tablet) {
+      top: 20px;
+      left: 20px;
+    }
+
+    .post-feature-author {
+      width: 35px;
+      height: 35px;
+      margin-bottom: 20px;
+
+      figure {
+        border: 2px solid $white-ter;
+        border-radius: 50%;
+      }
+
+      img {
+        border-radius: 50%;
+      }
+    }
+
+    .post-feature-tag {
+      text-transform: uppercase;
+      font-weight: $weight-bold;
+      font-size: $size-6;
+      color: $white-ter;
+
+      &:hover, &:focus {
+        color: $white-ter;
+      }
+    }
+  }
+
+
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+    border-radius: $post-card-border-radius;
+    transition: $post-card-transition;
+
+    &:hover,
+    &:focus {
+      transform: translateY(-5px);
+      box-shadow: $post-card-box-shadow;
+    }
+  }
+
+  .post-feature-navigation {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    margin: 0 35px 30px 0;
+    color: $white-ter;
+    z-index: 5;
+
+    @include until($tablet) {
+      margin: 0 15px 15px 0;
+    }
+
+    .post-feature-next,
+    .post-feature-prev {
+      cursor: pointer;
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .post-card {
+    .card {
+      background: $dark-theme-secondary;
+      color: $white-ter;
+    }
+
+    a {
+      color: $white-ter;
+    }
+
+    .post-card-footer {
+      color: $white-ter;
+    }
+  }
+}

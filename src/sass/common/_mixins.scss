@@ -1,0 +1,92 @@
+@mixin colorHoverAndFocus {
+  &:hover,
+  &:focus {
+    color: $link;
+    @content;
+  }
+}
+
+@mixin borderHoverAndFocus {
+  &:hover,
+  &:focus {
+    border: 1px solid $link;
+    @content;
+  }
+}
+
+@mixin inputDarkTheme {
+  background: $dark-theme-secondary;
+  border: 1px solid $dark-theme-border-color;
+  color: $dark-theme-text-color;
+
+  @include borderHoverAndFocus;
+
+  @include placeholder {
+    color: $dark-theme-text-color;
+  }
+}
+
+@mixin controlIconDarkTheme {
+  .control.has-icons-left .icon, .control.has-icons-right .icon {
+    color: $link;
+  }
+}
+
+@mixin tagLightTheme {
+  cursor: pointer;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  transition: $theme-transition;
+
+  @include colorHoverAndFocus {
+    border: 1px solid $link;
+  }
+
+  @content;
+}
+
+
+@mixin tagDarkTheme {
+  cursor: pointer;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  transition: $theme-transition;
+
+  background: $dark-theme-secondary;
+  color: $dark-theme-text-color;
+
+  @include borderHoverAndFocus {
+    background: $link;
+  }
+
+  @content;
+}
+
+@mixin scrollLightTheme {
+  ::-webkit-scrollbar {
+    width: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    background: $white-ter;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: $link;
+    border-radius: 6px;
+    border: 3px solid $white-ter;
+  }
+}
+
+@mixin scrollDarkTheme {
+  ::-webkit-scrollbar {
+    width: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    background: $dark-theme-secondary;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: $link;
+    border-radius: 6px;
+    border: 3px solid $dark-theme-secondary;
+  }
+}
+

@@ -1,0 +1,11 @@
+.main-content-area {
+  padding: 64px 0;
+
+  @include until($tablet) {
+    padding: 8px 0;
+  }
+}
+
+[data-theme="dark"] {
+  background: $dark-theme-secondary;
+}

@@ -1,0 +1,23 @@
+{
+  "% posts": "% publicaciones",
+  "1 post": "Una publicación",
+  "no posts": "Sin publicaciones",
+  "recent posts": "Post recientes",
+  "popular tags": "Tags populares",
+  "newer posts": "Nuevos posts",
+  "older posts": "Antiguos posts",
+  "newsletter": "Boletin informativo",
+  "newsletter description": "Suscríbase a nuestro boletín y manténgase actualizado sobre las últimas noticias!",
+  "subscribe email": "Ingresa tu email...",
+  "subscribe button": "Suscribete",
+  "copyright info": "Todos los derechos reservados.",
+  "change theme": "Cambiar a modo oscuro",
+  "posted by": "Publicado por",
+  "page not found": "Página no encontrada",
+  "not found description": "Lamentablemente, la página que estaba buscando no se pudo encontrar.",
+  "not-found-go-back": "Regresar al inicio",
+  "search placeholder": "Ingrese su busqueda",
+  "search suggest tags": "¿Podemos sugerirte una etiqueta?",
+  "search suggest authors": "¿Podemos sugerirte un autor?",
+  "authors subtitle": "Conoce a nuestros asombrosos autores"
+}

@@ -1,0 +1,16 @@
+{{#get "posts" filter="featured:true" include="authors,tags" limit="5" as |featured|}}
+{{#if featured}}
+<div class="post-feature column is-two-third-fullhd is-two-thirds-widescreen is-full-tablet is-full-mobile is-flex">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      {{#foreach featured}}
+      <div class="swiper-slide">
+        {{> "posts/post-feature-item"}}
+      </div>
+      {{/foreach}}
+    </div>
+    {{> "posts/post-features-navigation"}}
+  </div>
+</div>
+{{/if}}
+{{/get}}

@@ -1,0 +1,21 @@
+{{!< layout}}
+
+{{#> banner background=@site.cover_image}}
+<h1 class="mb-12">{{@site.title}}</h1>
+<h2 class="mb-24">{{@site.description}}</h2>
+{{/banner}}
+
+<main class="container main-content-area" data-aos="fade-up" data-aos-delay="300">
+  <div class="columns is-marginless is-multiline">
+    {{> "posts/post-features"}}
+
+    {{#foreach posts}}
+    {{> "posts/post-card"}}
+    {{/foreach}}
+  </div>
+  {{pagination}}
+</main>
+
+{{#contentFor "scripts"}}
+<script src="{{asset "scripts/pages/index.js"}}"></script>
+{{/contentFor}}

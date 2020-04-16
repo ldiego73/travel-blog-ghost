@@ -1,0 +1,48 @@
+$space-values: (2, 4, 8, 12, 16, 20, 24, 28, 32, 36) !default;
+
+$space-prefixes: (
+  p: padding,
+  pt: padding-top,
+  pr: padding-right,
+  pb: padding-bottom,
+  pl: padding-left,
+  px: (
+    padding-left,
+    padding-right
+  ),
+  py: (
+    padding-top,
+    padding-bottom
+  ),
+  m: margin,
+  mt: margin-top,
+  mr: margin-right,
+  mb: margin-bottom,
+  ml: margin-left,
+  mx: (
+    margin-left,
+    margin-right
+  ),
+  my: (
+    margin-top,
+    margin-bottom
+  )
+) !default;
+
+@mixin make-space($prefixes, $values) {
+  @each $p-key, $p-value in $prefixes {
+    @each $s-value in $values {
+      .#{$p-key}-#{$s-value} {
+        @if (length($p-value)) {
+          @each $p-v-item in $p-value {
+            #{$p-v-item}: #{$s-value}px
+          }
+        } @else {
+          #{$p-value}: #{$s-value}px
+        }
+      }
+    }
+  }
+}
+
+@include make-space($space-prefixes, $space-values);

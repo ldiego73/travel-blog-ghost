@@ -1,0 +1,37 @@
+{{#if background}}
+{{#contentFor "bannerStyles"}}
+<style type="text/css">
+  .banner .picture {
+    background-image: url({{img_url background size='xl'}});
+  }
+
+  @media(max-width: 1000px) {
+    .banner .picture {
+      background-image: url({{img_url background size='l'}});
+      background-image: -webkit-image-set(url({{img_url background size='l'}}) 1x,
+      url({{img_url background size='xl'}}) 2x);
+      background-image: image-set(url({{img_url background size='l'}}) 1x,
+      url({{img_url background size='xl'}}) 2x);
+    }
+  }
+
+  @media(max-width: 600px) {
+    .banner .picture {
+      background-image: url({{img_url background size='m'}});
+      background-image: -webkit-image-set(url({{img_url background size='m'}}) 1x,
+      url({{img_url background size='l'}}) 2x);
+      background-image: image-set(url({{img_url background size='m'}}) 1x,
+      url({{img_url background size='l'}}) 2x);
+    }
+  }
+</style>
+{{/contentFor}}
+<div class="banner with-image" data-aos="fade">
+  {{else}}
+  <div class="banner no-image">
+    {{/if}}
+    <div class="picture"></div>
+    <div class="content" data-aos="fade-down">
+      {{> @partial-block }}
+    </div>
+  </div>

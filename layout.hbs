@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="{{@site.lang}}">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{meta_title}}</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/aos/dist/aos.css" />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css" />
+  <link rel="stylesheet" type="text/css" href="{{asset "styles/app.css"}}" />
+  <script defer src="https://use.fontawesome.com/releases/v5.10.0/js/all.js"></script>
+
+  {{{block "styles"}}}
+  {{{block "bannerStyles"}}}
+
+  {{ghost_head}}
+</head>
+
+<body class="{{body_class}} has-fixed-header">
+  {{> header}}
+
+  {{{body}}}
+
+  {{> search}}
+
+  {{> footer}}
+
+  {{> back-to-top}}
+
+  <script defer src="https://unpkg.com/aos/dist/aos.js"></script>
+  <script defer src="https://unpkg.com/swiper/js/swiper.js"></script>
+  <script defer src="https://unpkg.com/@popperjs/core@2"></script>
+  <script defer src="https://unpkg.com/tippy.js@6"></script>
+  <script defer src="{{asset "scripts/app.js"}}"></script>
+
+  {{{block "scripts"}}}
+
+  {{ghost_foot}}
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+.back-to-top {
+  position: fixed;
+  right: 8px;
+  bottom: 8px;
+  background-color: $grey-dark;
+  color: $white;
+  height: 32px;
+  width: 32px;
+  font-size: 1.6rem;
+  text-align: center;
+  line-height: 32px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: none;
+}
+
+[data-theme="dark"] {
+  .back-to-top {
+    background-color: $primary;
+  }
+}

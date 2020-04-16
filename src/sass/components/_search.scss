@@ -1,0 +1,244 @@
+.search {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: $white;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 101;
+  transform: scale(1.2);
+  transition: $animation-scale;
+
+  &-title {
+    display: block;
+    color: $text;
+    font-weight: $weight-semibold;
+    font-size: $size-4;
+    text-align: left;
+  }
+
+  &-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  &-close {
+    margin-left: 16px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: $white;
+    cursor: pointer;
+    transition: $theme-transition;
+
+    span {
+      position: absolute;
+      display: block;
+      width: 16px;
+      height: 2px;
+      left: calc(50% - 8px);
+      background: $grey-lighter;
+      transition: $theme-transition;
+
+      &:nth-child(1) {
+        top: calc(50% - 6px);
+        transform: translateY(5px) rotate(45deg);
+      }
+      &:nth-child(2) {
+        top: calc(50% + 4px);
+        transform: translateY(-5px) rotate(-45deg);
+      }
+    }
+
+    @include colorHoverAndFocus {
+      border: 1px solid $link;
+
+      span {
+        background: $link;
+      }
+    }
+  }
+
+  .container {
+    margin-top: #{$header-height};
+  }
+
+  &-post {
+    display: flex;
+    position: relative;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    background: $dark-theme-text-color;
+    color: $text;
+    opacity: 0;
+    animation-duration: 0.8s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+
+    &-info {
+      flex: 1;
+      padding: 16px;
+    }
+
+    &-title {
+      margin-bottom: 4px;
+      font-size: $size-6;
+      font-weight: $weight-semibold;
+    }
+
+    &-time {
+      font-size: $size-7;
+    }
+
+    &-picture {
+      width: 80px;
+      height: 80px;
+      margin: 8px;
+      border-radius: 4px;
+    }
+
+    &-thumb {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 4px;
+    }
+
+    @include borderHoverAndFocus {
+      color: $link;
+
+      .search-post-time {
+        color: $text;
+      }
+    }
+  }
+
+  &-tags {
+    padding-left: calc(calc(0.75em - 1px) + 0.375em);
+
+    .tag {
+      @include tagLightTheme;
+    }
+  }
+
+  &-authors {
+    padding-left: calc(calc(0.75em - 1px) + 0.375em);
+
+    .search-author-info {
+      display: inline-block;
+      background: $white-ter;
+      border-radius: 4px;
+      transition: $post-card-transition;
+      color: $text;
+      box-shadow: $card-shadow;
+
+      &:hover,
+      &:focus {
+        transform: translateY(-5px);
+        box-shadow: $post-card-box-shadow;
+      }
+    }
+
+    .search-author-image {
+      width: 140px;
+      height: 90px;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+
+      img {
+        width: 140px;
+        height: 90px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    .search-author-name {
+      font-weight: $weight-semibold;
+      font-size: $size-5;
+    }
+  }
+
+  &.opened {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  @include from($tablet) {
+    .container {
+      max-width: 800px;
+    }
+  }
+
+  @include until($tablet) {
+    .container {
+      margin-top: #{$header-mobile-height};
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .search {
+    background: $dark-theme-primary;
+
+    &-close {
+      background: $dark-theme-primary;
+
+      span {
+        background: $dark-theme-text-color;
+      }
+
+      @include colorHoverAndFocus {
+        span {
+          background: $link;
+        }
+      }
+    }
+
+    &-title {
+      color: $dark-theme-text-color;
+    }
+
+    input {
+      @include inputDarkTheme;
+    }
+
+    @include controlIconDarkTheme;
+
+    &-tags {
+      .tag {
+        @include tagDarkTheme;
+      }
+    }
+
+    &-authors {
+      .search-author-info {
+        background: $dark-theme-secondary;
+        color: $dark-theme-text-color;
+      }
+    }
+
+    &-post {
+      background: $dark-theme-secondary;
+      color: $dark-theme-text-color;
+
+      @include borderHoverAndFocus {
+        color: $link;
+
+        .search-post-time {
+          color: $dark-theme-text-color;
+        }
+      }
+    }
+  }
+}

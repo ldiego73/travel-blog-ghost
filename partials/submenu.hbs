@@ -1,0 +1,44 @@
+<div class="submenu">
+  <div class="container">
+    {{#get "posts" filter="featured:false"  limit="4" order="published_at desc" as |recents|}}
+    <section class="menu-posts">
+      <h4 class="submenu-title mb-24">{{ t "recent posts" }}</h4>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          {{#foreach posts}}
+          <div class="swiper-slide">
+            <div class="menu-single-post">
+              <a href="{{url}}">
+                <figure class="post-picture lazy lazy-loading">
+                  {{#if feature_image}}
+                  <img class="post-thumb" data-src="{{img_url feature_image size="s"}}" />
+                  {{else}}
+                  <img class="post-thumb" data-src="{{asset "images/no-image.png"}}" />
+                  {{/if}}
+                </figure>
+                <div class="post-info">
+                  <h4>{{title}}</h4>
+                  <span>{{date published_at format="MMMM DD, YYYY"}}</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          {{/foreach}}
+        </div>
+      </div>
+    </section>
+    {{/get}}
+    <section class="menu-tags">
+      <h4 class="submenu-title mb-24">{{ t "popular tags" }}</h4>
+      <div class="content">
+        {{#get "tags" limit="all"}}
+        {{#foreach tags}}
+        <a href="{{url}}" class="mr-24">
+          {{name}}
+        </a>
+        {{/foreach}}
+        {{/get}}
+      </div>
+    </section>
+  </div>
+</div>

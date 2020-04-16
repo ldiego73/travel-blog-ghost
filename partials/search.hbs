@@ -1,0 +1,66 @@
+<div class="search">
+  <div class="container">
+    <div class="columns is-marginless is-multiline">
+      <div class="column is-full">
+        <div class="search-content">
+          <div class="control w-100 has-icons-right">
+            <input id="txtSearch" class="input is-rounded is-medium" type="text"
+              placeholder="{{ t "search placeholder" }}">
+            <span class="icon is-right">
+              <i class="fas fa-search"></i>
+            </span>
+          </div>
+          <button class="button is-outlined search-close">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+      <div class="search-results column is-full mb-32">
+      </div>
+      {{#get "tags" limit="all"}}
+      <div class="column is-full">
+        <div class="search-tags mb-24">
+          <h3 class="search-title mb-32">{{ t "search suggest tags" }}</h3>
+          {{#foreach tags}}
+          <a href="{{url}}">
+            <span class="tag is-medium mr-2 mb-8">{{name}}</span>
+          </a>
+          {{/foreach}}
+        </div>
+      </div>
+      {{/get}}
+      {{#get "authors" limit="all"}}
+      <div class="column is-full">
+        <div class="search-authors mb-24">
+          <h3 class="search-title mb-32">{{ t "search suggest authors" }}</h3>
+          {{#foreach authors}}
+          <a href="{{url}}" class="search-author-info mr-8 mb-12" aria-label="author" rel="author">
+            <figure class="search-author-image lazy lazy-loading is-small">
+              {{#if profile_image}}
+              <img class="lazy" data-src="{{img_url profile_image size="m"}}" />
+              {{else}}
+              <img class="lazy" data-src="{{asset "images/avatar.jpg"}}" />
+              {{/if}}
+            </figure>
+            <h5 class="search-author-name p-16">{{ name }}</h5>
+          </a>
+          {{/foreach}}
+        </div>
+      </div>
+      {{/get}}
+    </div>
+  </div>
+</div>
+
+<script id="tmplSearchResultPost" type="text/template">
+  <a href="POST_URL" class="search-post animated fadeInUp" style="animation-delay: 0.POST_DELAYs">
+    <div class="search-post-info">
+      <h4 class="search-post-title">POST_TITLE</h4>
+      <p class="search-post-time">POST_PUBLISHED_AT</p>
+    </div>
+    <figure class="search-post-picture">
+      <img class="search-post-thumb" src="POST_IMAGE" />
+    </figure>
+  </a>
+</script>

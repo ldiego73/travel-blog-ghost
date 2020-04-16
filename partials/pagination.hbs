@@ -1,0 +1,19 @@
+<nav class="pagination" role="navigation" aria-label="pagination">
+  {{#if prev}}
+  <a href="{{page_url prev}}" class="button is-primary is-small pagination-previous" aria-label="{{t "newer posts"}}">
+    <span class="icon">
+      <i class="fas fa-chevron-left"></i>
+    </span>
+    <span>{{t "newer posts"}}</span>
+  </a>
+  {{/if}}
+  <span class="pagination-number">{{t "Page"}} {{page}} {{t "of"}} {{pages}}</span>
+  {{#if next}}
+  <a href="{{page_url next}}" class="button is-primary is-small pagination-next" aria-label="{{t "older posts"}}">
+    <span>{{t "older posts"}}</span>
+    <span class="icon">
+      <i class="fas fa-chevron-right"></i>
+    </span>
+  </a>
+  {{/if}}
+</nav>

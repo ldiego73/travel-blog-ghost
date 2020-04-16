@@ -1,0 +1,60 @@
+$lazy-loading-size: 36px;
+$lazy-loading-size-small: 16px;
+$lazy-loading-background: $grey-light;
+
+.lazy {
+  position: relative;
+
+  img {
+    display: block;
+    transition: 0.3s opacity linear;
+    opacity: 1;
+  }
+
+  &.lazy-loading {
+    background: $grey-lighter;
+
+    img {
+      opacity: 0;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      width: $lazy-loading-size;
+      height: $lazy-loading-size;
+      border-radius: 50%;
+      background-color: $lazy-loading-background;
+      opacity: 0.6;
+      position: absolute;
+      top: calc(50% - #{$lazy-loading-size / 2});
+      left: calc(50% - #{$lazy-loading-size / 2});
+
+      animation: loading 2s infinite ease-in-out;
+    }
+
+    &.is-small {
+      &::before,
+      &::after {
+        width: $lazy-loading-size-small;
+        height: $lazy-loading-size-small;
+        top: calc(50% - #{$lazy-loading-size-small / 2});
+        left: calc(50% - #{$lazy-loading-size-small / 2});
+      }
+    }
+
+    &::before {
+      animation-delay: -1s;
+    }
+
+    @keyframes loading {
+      0%,
+      100% {
+        transform: scale(0);
+      }
+      50% {
+        transform: scale(1);
+      }
+    }
+  }
+}
